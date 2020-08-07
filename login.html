@@ -16,6 +16,7 @@
   <style>
     html, body{
       height: 100%;
+      background-image: linear-gradient(rgb(199, 68, 107), white);
     }
 
     body {
@@ -38,14 +39,13 @@
 </head>
 
 <body class="text-center">
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) -> Punto 3 y 4.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
+  <form action="index.html" method="GET" class="signin">
+    <h1>Por favor Inicie Sesion</h1>
+    <label for="inputEmail" ><input type="email" placeholder="Correo electrónico" autofocus required></label>
+    <label for="inputPassword" ><input type="password" placeholder="Contraseña" minlength="6" required></label>
+    <br>
+    <button type="submit">Iniciar</button>
+  </form>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
