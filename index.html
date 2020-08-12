@@ -16,7 +16,6 @@
   <style>
     html, body{
       height: 100%;
-      background-image: linear-gradient(rgb(199, 68, 107), white);
     }
 
     body {
@@ -39,10 +38,11 @@
 </head>
 
 <body class="text-center">
-  <form action="home.html" method="GET" class="signin">
-    <h1>Por favor Inicie Sesion</h1>
-    <label for="inputEmail" ><input type="email" placeholder="Correo electrónico" autofocus required></label>
-    <label for="inputPassword" ><input type="password" placeholder="Contraseña" minlength="6" required></label>
+  <form action="home.html" method="GET" class="signin container-lg rounded">
+    <h1>Inicie Sesion</h1>
+    <label for="inputEmail" ><input type="email" placeholder="Correo electrónico" autofocus required class="rounded form-control"></label>
+    <label for="inputPassword" ><input type="password" placeholder="Contraseña" minlength="6" required class="rounded form-control"></label>
+    <label><input type="checkbox" value="remember-me"> Remember me</label>
     <br>
     <button type="submit" class="btn-lg btn btn-primary">Iniciar</button>
   </form>

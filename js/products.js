@@ -58,7 +58,8 @@ function showProductList(){
                         <p class="mb-1">` + product.description + `</p>
                         <br>
                         <br>
-                        <h4 class="mb-1">US$`+ product.cost +`</h4>
+                        <br>
+                        <h4 class="mb-1 font-weight-bold">US$ `+ product.cost +`</h4>
                     </div>
                 </div>
             </a>
