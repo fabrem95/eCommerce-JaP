@@ -1,6 +1,8 @@
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
+const ORDER_BY_PROD_PRICE_DESC = "PrecioDesc";
+const ORDER_BY_PROD_PRICE_ASC = "PrecioAsc";
 var currentProductsArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
@@ -28,6 +30,24 @@ function sortProduct(criteria, array){
 
             if ( aCount > bCount ){ return -1; }
             if ( aCount < bCount ){ return 1; }
+            return 0;
+        });
+    } else if (criteria === ORDER_BY_PROD_PRICE_DESC){
+        result = array.sort(function(a, b) {
+            let aCount = parseInt(a.cost);
+            let bCount = parseInt(b.cost);
+
+            if ( aCount > bCount ){ return -1; }
+            if ( aCount < bCount ){ return 1; }
+            return 0;
+        });
+    } else if (criteria === ORDER_BY_PROD_PRICE_ASC){
+        result = array.sort(function(a, b) {
+            let aCount = parseInt(a.cost);
+            let bCount = parseInt(b.cost);
+
+            if ( aCount < bCount ){ return -1; }
+            if ( aCount > bCount ){ return 1; }
             return 0;
         });
     }
@@ -103,6 +123,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     document.getElementById("sortByCount").addEventListener("click", function(){
         sortAndShowProduct(ORDER_BY_PROD_COUNT);
+    });
+
+    document.getElementById("sortByPriceAsc").addEventListener("click", function(){
+        sortAndShowProduct(ORDER_BY_PROD_PRICE_DESC);
+    });
+
+    document.getElementById("sortByPriceDesc").addEventListener("click", function(){
+        sortAndShowProduct(ORDER_BY_PROD_PRICE_ASC);
     });
 
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
