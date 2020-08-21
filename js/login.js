@@ -2,8 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-    const loginForm = document.getElementById("loginForm")
-    
+
     loginForm.onsubmit = function (e){
         e.preventDefault();
         const user = document.getElementById("email").value;
@@ -16,6 +15,10 @@ document.addEventListener("DOMContentLoaded", function(e){
     }
 
     const loginAuth = function (url, data){
+
+        const user = document.getElementById("email").value;
+        const submitButton = document.getElementById("submitButton")
+
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(data), 
@@ -27,9 +30,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         .then(response => {
             localStorage.setItem("token", response.token);
             console.log('Success:', response.token);
+            localStorage.setItem("user", document.getElementById("email").value)
             window.location.href = "/";
         });
     }
 })
-
-
