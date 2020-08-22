@@ -3,10 +3,11 @@ const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
 const ORDER_BY_PROD_PRICE_DESC = "PrecioDesc";
 const ORDER_BY_PROD_PRICE_ASC = "PrecioAsc";
-var currentProductsArray = [];
+var currentProductArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
+const prodSearch = document.getElementById("prodSearch");
 
 function sortProduct(criteria, array){
     let result = [];
@@ -90,11 +91,11 @@ function showProductList(){
     }
 }
 
-function sortAndShowProduct(sortCriteria, ProductArray){
+function sortAndShowProduct(sortCriteria, productArray){
     currentSortCriteria = sortCriteria;
 
-    if(ProductArray != undefined){
-        currentProductArray = ProductArray;
+    if(productArray != undefined){
+        currentProductArray = productArray;
     }
 
     currentProductArray = sortProduct(currentSortCriteria, currentProductArray);
@@ -108,6 +109,14 @@ function sortAndShowProduct(sortCriteria, ProductArray){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function(resultObj){
+        prodSearch.addEventListener("keyup", (e) => {
+            const searchString = e.target.value.toLowerCase()
+            const products = resultObj.data
+            const filteredProds = products.filter( product => { return (product.name.toLowerCase().includes(searchString) || product.description.toLowerCase().includes(searchString))})
+            console.log(filteredProds)
+            console.log(searchString)
+            sortAndShowProduct(ORDER_ASC_BY_NAME, filteredProds);
+        })
         if (resultObj.status === "ok"){
             sortAndShowProduct(ORDER_ASC_BY_NAME, resultObj.data);
         }
