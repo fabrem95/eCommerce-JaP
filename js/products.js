@@ -87,7 +87,7 @@ function showProductList(){
             `
         }
 
-        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+            document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -109,17 +109,17 @@ function sortAndShowProduct(sortCriteria, productArray){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function(resultObj){
-        prodSearch.addEventListener("keyup", (e) => {
-            const searchString = e.target.value.toLowerCase()
-            const products = resultObj.data
-            const filteredProds = products.filter( product => { return (product.name.toLowerCase().includes(searchString) || product.description.toLowerCase().includes(searchString))})
-            console.log(filteredProds)
-            console.log(searchString)
-            sortAndShowProduct(ORDER_ASC_BY_NAME, filteredProds);
-        })
         if (resultObj.status === "ok"){
             sortAndShowProduct(ORDER_ASC_BY_NAME, resultObj.data);
         }
+        prodSearch.addEventListener("keyup", (e) => {
+            const searchString = prodSearch.value.toLowerCase()
+            const products = resultObj.data
+            const currentProductArray= products.filter( product => { return (product.name.toLowerCase().includes(searchString) || product.description.toLowerCase().includes(searchString))})
+            console.log(searchString)
+            console.log(currentProductArray.length)
+            sortAndShowProduct(ORDER_ASC_BY_NAME, currentProductArray);
+        })
     });
 
     document.getElementById("sortAsc").addEventListener("click", function(){
