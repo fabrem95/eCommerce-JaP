@@ -85,9 +85,8 @@ function showProductList(){
                 </div>
             </a>
             `
-        }
-
-            document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+        } 
+        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -115,9 +114,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
         prodSearch.addEventListener("keyup", (e) => {
             const searchString = prodSearch.value.toLowerCase()
             const products = resultObj.data
-            const currentProductArray= products.filter( product => { return (product.name.toLowerCase().includes(searchString) || product.description.toLowerCase().includes(searchString))})
-            console.log(searchString)
-            console.log(currentProductArray.length)
+            const currentProductArray= products.filter( product => { 
+                return (product.name.toLowerCase().includes(searchString) || 
+                product.description.toLowerCase().includes(searchString))})
             sortAndShowProduct(ORDER_ASC_BY_NAME, currentProductArray);
         })
     });

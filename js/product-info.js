@@ -1,4 +1,5 @@
 var product = {};
+var comments = {};
 
 function showImagesGallery(array){
 
@@ -16,6 +17,36 @@ function showImagesGallery(array){
         `
 
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+    }
+}
+
+function showComments(array){
+
+    let htmlContentToAppend = "";
+
+    for(let i = 0; i < array.length; i++){
+        let comments = array[i];
+
+        htmlContentToAppend += `
+        <div class="border border-secondary rounded mb-2 p-2 bg-light">
+            <div class="row">
+                <div class="col-md-10">
+                    <h6 class="font-weight-bold text-primary ml-2">` + comments.user + `:</h6>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-right">Puntuacion: ` + comments.score + `/5</h6>
+                </div>
+                </div>            
+                    <hr class="my-3">
+                <div>
+                    <p class="ml-2">` + comments.description + `</p>
+                </div>
+                <div>
+                    <p class="font-weight-bold text-right mb-0">` + comments.dateTime + `</p>
+                </div>
+        </div>`
+
+        document.getElementById("productComments").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -43,3 +74,15 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function(e){
+        getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
+        if (resultObj.status === "ok")
+            {
+                comments = resultObj.data;
+
+                showComments(comments);
+        }
+    })
+});
+
