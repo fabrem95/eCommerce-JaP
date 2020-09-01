@@ -20,6 +20,15 @@ function showImagesGallery(array){
     }
 }
 
+function starRate(num) {
+    const starOn = `<span class="fa fa-star checked"></span>`
+    const starOff = `<span class="fa fa-star"></span>`
+
+    return(
+        starOn.repeat([num]) +
+        starOff.repeat([5-num]))
+}
+
 function showComments(array){
 
     let htmlContentToAppend = "";
@@ -28,16 +37,17 @@ function showComments(array){
         let comments = array[i];
 
         htmlContentToAppend += `
-        <div class="border border-secondary rounded mb-2 p-2 bg-light">
+        <div class="border border-secondary rounded mb-2 p-2 bg-light depth-1">
             <div class="row">
-                <div class="col-md-10">
-                    <h6 class="font-weight-bold text-primary ml-2">` + comments.user + `:</h6>
+                <div class="col-md-9">
+                    <h6 class="font-weight-bold text-primary ml-2">` + comments.user + `</h6>
                 </div>
-                <div class="col-md-2">
-                    <h6 class="text-right">Puntuacion: ` + comments.score + `/5</h6>
+                <div class="col-md-3">
+                    <div id=`+ i.toString() +` class="text-right">
+                    </div>
                 </div>
-                </div>            
-                    <hr class="my-3">
+            </div> 
+                <hr class="my-3">
                 <div>
                     <p class="ml-2">` + comments.description + `</p>
                 </div>
@@ -46,7 +56,11 @@ function showComments(array){
                 </div>
         </div>`
 
-        document.getElementById("productComments").innerHTML = htmlContentToAppend;
+        document.getElementById("productComments").innerHTML = htmlContentToAppend
+    }
+    for (let i = 0; i < array.length; i++){
+        let comments = array[i];
+        document.getElementById(i.toString()).innerHTML = starRate(comments.score)
     }
 }
 
@@ -85,4 +99,5 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     })
 });
+
 
