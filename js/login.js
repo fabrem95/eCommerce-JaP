@@ -26,10 +26,9 @@ document.addEventListener("DOMContentLoaded", function(e){
             'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-        .catch(error => console.error('Error:', error))
+        .catch(error => alert('Fallo en la autentificación'))
         .then(response => {
             localStorage.setItem("token", response.token);
-            console.log('Success:', response.token);
             localStorage.setItem("user", document.getElementById("email").value)
             window.location.href = "/";
         });

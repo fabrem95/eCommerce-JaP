@@ -114,15 +114,15 @@
         <div class="container border border-secondary rounded-bottom py-2 mb-2">
           <form id="postComment" action="">
             <div class="stars">
-              </label><input id="rating-1" name="star" type="radio" value="1"><label for="rating-1"></label>  
-              </label><input id="rating-2" name="star" type="radio" value="2"><label for="rating-2"></label> 
+              </label><input id="rating-1" name="star" type="radio" value="5"><label for="rating-1"></label>  
+              </label><input id="rating-2" name="star" type="radio" value="4"><label for="rating-2"></label> 
               </label><input id="rating-3" name="star" type="radio" value="3"><label for="rating-3"></label> 
-              </label><input id="rating-4" name="star" type="radio" value="4"><label for="rating-4"></label>
-              </label><input id="rating-5" name="star" type="radio" value="5"><label for="rating-5"></label>
+              </label><input id="rating-4" name="star" type="radio" value="2"><label for="rating-4"></label>
+              </label><input id="rating-5" name="star" type="radio" value="1"><label for="rating-5"></label>
             </div>
-            <label for="writeUrName">Nombre<br><input name="user" type="text" required></label>
-            <label for="writeComment">Comenta<textarea name="description" cols="129" rows="2"></textarea></label>
-            <button class="btn btn-primary">Comentar</button>
+            <h6 id="commentUser" class="font-weight-bold text-info py-1"></h6>
+            <label class="input-group" for="writeComment"><textarea id="newComment" class="input form-control" name="description" placeholder="Comenta"></textarea></label>
+            <button id="submit" class="btn btn-primary">Comentar</button>
           </form>
         </div>
       </div>
