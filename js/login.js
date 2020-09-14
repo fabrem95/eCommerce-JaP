@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded", function(e){
             'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-        .catch(error => alert('Fallo en la autentificación'))
         .then(response => {
             localStorage.setItem("token", response.token);
             localStorage.setItem("user", document.getElementById("email").value)
             window.location.href = "/";
-        });
+        })
+        .catch(error => alert('Fallo en la autentificación'))
     }
 })
