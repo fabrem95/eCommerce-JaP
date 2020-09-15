@@ -54,3 +54,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
   userName.innerHTML = keyUser
 });
+
+document.getElementById("logout").onclick = () => {
+  localStorage.removeItem("token")
+}

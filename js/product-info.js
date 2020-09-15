@@ -9,9 +9,9 @@ function showImagesGallery(array){
         let imageSrc = array[i];
 
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img class="d-block w-100" src="` + imageSrc + `" alt="">
             </div>
         </div>
         `
@@ -189,8 +189,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj2.status === "ok")
         {
             totalProducts = resultObj2.data;
-    
-            console.log(product);
     
             //Muestro las imagenes en forma de galería
             showRecommendedGallery(totalProducts, product.relatedProducts);
