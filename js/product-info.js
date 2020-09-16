@@ -8,16 +8,25 @@ function showImagesGallery(array){
     for(let i = 0; i < array.length; i++){
         let imageSrc = array[i];
 
-        htmlContentToAppend += `
-        <div class="carousel-inner">
-            <div class="carousel-item">
-                <img class="d-block w-100" src="` + imageSrc + `" alt="">
-            </div>
-        </div>
-        `
+            htmlContentToAppend += `
+                <div class="carousel-item">
+                    <img src="`+ imageSrc +`" class="d-block w-100" alt="...">
+                </div>
+            `
+        }
 
-        document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
-    }
+    htmlContentToAppend += `
+            <a class="carousel-control-prev ml-5" href="#productImagesGallery" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#productImagesGallery" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+    `
+    document.getElementById("product-infoGallery").innerHTML = htmlContentToAppend;
+    document.getElementsByClassName("carousel-item")[0].classList.add("active")
 }
 
 function starRate(num) {
