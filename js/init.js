@@ -46,7 +46,7 @@ var getJSONData = function(url){
 document.addEventListener("DOMContentLoaded", function(e){
   const token = localStorage.getItem("token");
   if(!token) {
-    window.location.href = "/login.html";
+    window.location.href = "./login.html";
   }
 
   const keyUser = localStorage.getItem("user");
