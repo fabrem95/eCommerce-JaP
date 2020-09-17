@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         .then(response => {
             localStorage.setItem("token", response.token);
             localStorage.setItem("user", document.getElementById("email").value)
-            window.location.href = "/";
+            window.location.href = "./index.html";
         })
         .catch(error => alert('Fallo en la autentificación'))
     }
