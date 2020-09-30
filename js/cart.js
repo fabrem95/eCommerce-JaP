@@ -1,5 +1,4 @@
 let currentCartArray = []
-let cartUnitCount = document.getElementsByClassName('quantity')
 
 function showCartArray(){
 
@@ -8,91 +7,83 @@ function showCartArray(){
         let cart = currentCartArray[i];
 
             htmlContentToAppend += `
-                <div class="row mb-4">
-                    <div class="col-md-5 col-lg-3 col-xl-3">
-                    <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0"> 
-                        <img src="`+ cart.src +`" alt="" class="img-fluid w-50 mx-5">
-                    </div>
-                    </div>
-                    <div class="col-md-7 col-lg-9 col-xl-9 pl-0">
-                    <div>
-                        <div class="d-flex justify-content-between">
-                        <div class="col-6">
-                            <h6>`+ cart.name +`</h6>
+                <div class="card-body border-bottom">
+                    <div class="row cart-row">
+                        <div class="col-md-5 col-lg-3 col-xl-3">
+                            <img src="`+ cart.src +`" alt="" class="img-fluid w-50">
                         </div>
-                        <div>
-                            <div class="text-right">
-                            <input class="col-7 quantity" min="0" name="quantity" value="`+ cart.count +`" type="number">
+                        <div class="col-md-7 col-lg-9 col-xl-9">
+                            <div>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h6>`+ cart.name +`</h6>
+                                    </div>
+                                    <div>
+                                        <div class="def-number-input number-input safari_only mb-0 w-100 text-right">
+                                            <input class="col-4 quantity " min="0" name="quantity" value="`+ cart.count +`" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="text-right align-text-bottom">
+                                        <p class="mb-0 "><span><strong class="item-currency">`+ cart.currency +" "+`</strong><strong class="cart-price">`+ cart.unitCost +`</strong></span></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-3 pr-0 text-right">
-                        <p>
-                            <span>
-                            <strong>`+ cart.currency +" "+`</strong><strong id="cartUnitCost">`+ cart.unitCost +`</strong>
-                            </span>
-                        </p>
-                        </div>
-                    </div>
                     </div>
                 </div>
-            `
+                `
         }
 
         document.getElementById("cartProds").innerHTML = htmlContentToAppend;
 }
 
-function showCartSubTotal(){
+function updateCartTotal() {
+    var cartItemContainer = document.getElementsByClassName('cart-items')[0]
+    var cartRows = cartItemContainer.getElementsByClassName('cart-row')
+    var total = 0
+    for (var i = 0; i < cartRows.length; i++) {
+        var cartRow = cartRows[i]
+        var priceElement = cartRow.getElementsByClassName('cart-price')[0]
+        var quantityElement = cartRow.getElementsByClassName('quantity')[0]
+        var itemCurrency = cartRow.getElementsByClassName('item-currency')[0].innerText
+        var price = parseInt(priceElement.innerText)
+        var quantity = quantityElement.value
 
-    let htmlContentToAppend = "";
-    for(let i = 0; i < currentCartArray.length; i++){
-        let cart = currentCartArray[i];
-
-            htmlContentToAppend += `
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                            Subtotal
-                            <span class="cartSubtotal">`+ cart.currency + " " + cart.unitCost*cart.count +`</span></li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
-                                Envio
-                                <span>Gratis</span></li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-0 mb-3"><strong>Total</strong><span><strong class="cartSubtotal">`+ cart.currency + " " + cart.unitCost*cart.count +`</strong></span></li>
-                        </ul>
-                        <button type="button" class="btn btn-primary btn-block waves-effect waves-light">Comprar</button>
-                    </div>
-                </div>
-            `
+        if (itemCurrency === "UYU ") {
+            total += (price * quantity)
+        } else {
+            total += (price * quantity)*40
         }
-
-        document.getElementById("cartSubTotal").innerHTML = htmlContentToAppend;
+    }
+    document.getElementsByClassName('cart-total-price')[0].innerText = 'UYU ' + total
+    document.getElementsByClassName('cart-subtotal-price')[0].innerText = 'UYU ' + total
 }
 
-
+function quantityChanged(event) {
+    var input = event.target
+    if (isNaN(input.value) || input.value <= 0) {
+        input.value = 1
+    }
+    updateCartTotal()
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(CART_INFO_URL).then(function(resultObj){
+    getJSONData(CART_PRODS).then(function(resultObj){
         if (resultObj.status === "ok"){
             let obj = resultObj.data.articles
             currentCartArray = obj
 
-            showCartArray()
-            showCartSubTotal()
+            showCartArray();
+            updateCartTotal();
 
-            cartUnitCount[0].onchange = () => {
-                let cartSubtotal = document.getElementsByClassName('cartSubtotal')
-                let cartUnitCost = document.getElementById('cartUnitCost')
-
-                for (let i = 0; i < cartSubtotal.length; i++) {
-                    const itemCount = cartSubtotal[i];
-                    let unitCost = cartUnitCost.innerHTML
-                    
-                    itemCount.innerHTML = "UYU " + cartUnitCount[0].value*unitCost
-                }
-            };
+            var quantityInputs = document.getElementsByClassName('quantity')
+            for (var i = 0; i < quantityInputs.length; i++) {
+                var input = quantityInputs[i]
+                input.addEventListener('change', quantityChanged)
+            }
         }
     });
 });
