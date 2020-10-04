@@ -10,7 +10,7 @@ function showImagesGallery(array){
 
             htmlContentToAppend += `
                 <div class="carousel-item">
-                    <img src="`+ imageSrc +`" class="d-block w-100" alt="...">
+                    <img src="`+ imageSrc +`" class="rounded d-block w-100" alt="...">
                 </div>
             `
         }

@@ -15,57 +15,10 @@
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    .checked {
-      color: orange;
-    }
-    .stars{
-      float: right;
-      display: flex;
-      transform: rotateY(180deg);
-    }
-    .stars input {
-      display: none;
-    }
-    .stars label {
-      display: block;
-      cursor: pointer;
-      width: 16px;
-    }
-    .stars label:before{
-      content: '\f005';
-      font-family: fontAwesome;
-      position: relative;
-      display: block;
-      color: gray;
-    }
-    .stars label:after{
-      content: '\f005';
-      font-family: fontAwesome;
-      position: absolute;
-      display: block;
-      color: orange;
-      top: 0;
-      opacity: 0;
-      transition: .5s;
-      text-shadow: 0 2px 5px rgba(0,0,0,.5);
-    }
-    .stars label:hover:after,
-    .stars label:hover ~ label.after,
-    .stars input:checked ~ label:after{
-      opacity: 1;
-    }
-    .carousel-control-prev-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
-    }
-    .carousel-control-next-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
-    }
-  </style>
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
+  <nav class="site-header sticky-top py-2 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>

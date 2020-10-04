@@ -7,23 +7,23 @@ function showCartArray(){
         let cart = currentCartArray[i];
 
             htmlContentToAppend += `
-                <div class="card-body border-bottom">
+                <div class="card-body border-bottom bg-light">
                     <div class="row cart-row">
-                        <div class="col-md-5 col-lg-3 col-xl-3">
-                            <img src="`+ cart.src +`" alt="" class="img-fluid w-50">
+                        <div class="col-md-5 col-lg-3 col-xl-3 h-50">
+                            <img src="`+ cart.src +`" alt="" class="rounded img-fluid w-100">
                         </div>
                         <div class="col-md-7 col-lg-9 col-xl-9">
                             <div>
-                                <div class="d-flex justify-content-between">
-                                    <div>
+                                <div class="row d-flex justify-content-between">
+                                    <div class="col-7 px-0">
                                         <h6>`+ cart.name +`</h6>
                                     </div>
-                                    <div>
-                                        <div class="def-number-input number-input safari_only mb-0 w-100 text-right">
-                                            <input class="col-4 quantity " min="0" name="quantity" value="`+ cart.count +`" type="number">
+                                    <div class="col-2 px-0">
+                                        <div class="def-number-input number-input pl-4">
+                                            <input class="form-control quantity" min="0" name="quantity" value="`+ cart.count +`" type="number">
                                         </div>
                                     </div>
-                                    <div class="text-right align-text-bottom">
+                                    <div class="col-3 pl-0 text-right align-text-bottom">
                                         <p class="mb-0 "><span><strong class="item-currency">`+ cart.currency +" "+`</strong><strong class="cart-price">`+ cart.unitCost +`</strong></span></p>
                                     </div>
                                 </div>
