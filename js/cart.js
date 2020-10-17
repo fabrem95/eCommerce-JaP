@@ -1,4 +1,8 @@
-let currentCartArray = []
+var cartItemContainer = document.getElementsByClassName('cart-items')[0]
+var cartRows = cartItemContainer.getElementsByClassName('cart-row')
+var total = 0
+var shippingCost = 5
+var currentCartArray = []
 
 function showCartArray(){
 
@@ -38,9 +42,7 @@ function showCartArray(){
 }
 
 function updateCartTotal() {
-    var cartItemContainer = document.getElementsByClassName('cart-items')[0]
-    var cartRows = cartItemContainer.getElementsByClassName('cart-row')
-    var total = 0
+
     for (var i = 0; i < cartRows.length; i++) {
         var cartRow = cartRows[i]
         var priceElement = cartRow.getElementsByClassName('cart-price')[0]
@@ -50,13 +52,18 @@ function updateCartTotal() {
         var quantity = quantityElement.value
 
         if (itemCurrency === "UYU ") {
+            total = 0
             total += (price * quantity)
         } else {
             total += (price * quantity)*40
         }
     }
-    document.getElementsByClassName('cart-total-price')[0].innerText = 'UYU ' + total
-    document.getElementsByClassName('cart-subtotal-price')[0].innerText = 'UYU ' + total
+
+    document.getElementsByClassName('cart-subtotal-price')[0].innerText = 'UYU ' + parseInt(total) 
+    
+    document.getElementById('shippingMethod').innerHTML = 'UYU ' + parseInt(total*(shippingCost/100))
+    
+    document.getElementsByClassName('cart-total-price')[0].innerText = 'UYU ' + parseInt(total*(1+shippingCost/100))  
 }
 
 function quantityChanged(event) {
@@ -65,6 +72,17 @@ function quantityChanged(event) {
         input.value = 1
     }
     updateCartTotal()
+}
+
+document.getElementById('payButton').onclick = () => {
+    if (
+        document.getElementById('cname').value.length == 0 ||
+        document.getElementById('ccnum').value.length == 0 ||
+        document.getElementById('expYear').value.length == 0 ||
+        document.getElementById('cvv').value.length == 0
+    ) {
+        alert('Complete todos los campos de Forma de Pago')
+    }
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -84,6 +102,19 @@ document.addEventListener("DOMContentLoaded", function(e){
                 var input = quantityInputs[i]
                 input.addEventListener('change', quantityChanged)
             }
+
+            var shippingMethod = document.getElementsByName('shipping')
+            for (var i = 0; i < shippingMethod.length; i++) {
+                var shippingInput = shippingMethod[i]
+                shippingInput.addEventListener('click', () => {
+                    shippingCost = event.target.value
+                    
+                    document.getElementById('shippingMethod').innerHTML = 'UYU ' + total*(shippingCost/100)
+
+                    updateCartTotal()
+                })
+            }
         }
     });
 });
+
