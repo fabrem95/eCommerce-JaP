@@ -190,3 +190,11 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 .modal-header, .modal-footer{
   background-color: rgba(129, 124, 115, 0.295);
 }
+.g-signin2{
+  margin: 20px;
+  
+}
+.abcRioButton {
+  margin-left: auto;
+  margin-right: auto;
+}

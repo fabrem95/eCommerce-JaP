@@ -6,6 +6,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <meta name="google-signin-client_id" content="732444556536-8hev84732lurmmmsc64br78rkvhq6na0.apps.googleusercontent.com
+  ">
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -45,9 +47,11 @@
     <label><input type="checkbox" value="remember-me"> Remember me</label>
     <br>
     <button id="submitButton" type="submit" class="btn-lg btn btn-primary">Iniciar</button>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
   </form>
 
   <!-- <script src="js/init.js"></script> -->
   <script src="js/login.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
