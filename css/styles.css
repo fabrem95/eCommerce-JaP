@@ -190,3 +190,6 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 .modal-header, .modal-footer{
   background-color: rgba(129, 124, 115, 0.295);
 }
+.cart-image{
+  height: 110px;
+}

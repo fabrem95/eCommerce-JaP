@@ -1,5 +1,12 @@
+//Elementos HTML
 var cartItemContainer = document.getElementsByClassName('cart-items')[0]
 var cartRows = cartItemContainer.getElementsByClassName('cart-row')
+var cartProds = document.getElementById("cartProds")
+var deleteCartItemButtons = document.getElementsByClassName('delete-item')
+var cartSubtotal = document.getElementsByClassName('cart-subtotal-price')[0]
+var shippingMethodPrice = document.getElementById('shippingMethodPrice')
+var cartTotalPrice = document.getElementsByClassName('cart-total-price')[0]
+
 var total = 0
 var shippingCost = 5
 var currentCartArray = []
@@ -11,34 +18,35 @@ function showCartArray(){
         let cart = currentCartArray[i];
 
             htmlContentToAppend += `
-                <div class="card-body border-bottom bg-light">
+                <div class="card-body border bg-light">
                     <div class="row cart-row">
                         <div class="col-md-5 col-lg-3 col-xl-3 h-50">
-                            <img src="`+ cart.src +`" alt="" class="rounded img-fluid w-100">
+                            <img src="`+ cart.src +`" alt="" class="cart-image rounded img-fluid w-100">
                         </div>
                         <div class="col-md-7 col-lg-9 col-xl-9">
-                            <div>
-                                <div class="row d-flex justify-content-between">
-                                    <div class="col-7 px-0">
-                                        <h6>`+ cart.name +`</h6>
-                                    </div>
-                                    <div class="col-2 px-0">
-                                        <div class="def-number-input number-input pl-4">
-                                            <input class="form-control quantity" min="0" name="quantity" value="`+ cart.count +`" type="number">
-                                        </div>
-                                    </div>
-                                    <div class="col-3 pl-0 text-right align-text-bottom">
-                                        <p class="mb-0 "><span><strong class="item-currency">`+ cart.currency +" "+`</strong><strong class="cart-price">`+ cart.unitCost +`</strong></span></p>
+                            <div class="row">
+                                <div class="col-7 px-0">
+                                    <h6 class="">`+ cart.name +`</h6>
+                                </div>
+                                <div class="col-2 px-0">
+                                    <div class="pl-4">
+                                        <input class="form-control quantity" min="0" name="quantity" value="`+ cart.count +`" type="number">
                                     </div>
                                 </div>
+                                <div class="col-3 pl-0 text-right align-text-bottom">
+                                    <p class="mb-0 "><span><strong class="item-currency">`+ cart.currency +" "+`</strong><strong class="cart-price">`+ cart.unitCost +`</strong></span></p>
+                                </div>
                             </div>
+                            <button class="delete-item btn btn-outline-danger float-right mt-5">
+                                Quitar
+                            </button>
                         </div>
                     </div>
                 </div>
                 `
         }
 
-        document.getElementById("cartProds").innerHTML = htmlContentToAppend;
+        cartProds.innerHTML = htmlContentToAppend;
 }
 
 function updateCartTotal() {
@@ -59,11 +67,23 @@ function updateCartTotal() {
         }
     }
 
-    document.getElementsByClassName('cart-subtotal-price')[0].innerText = 'UYU ' + parseInt(total) 
-    
-    document.getElementById('shippingMethod').innerHTML = 'UYU ' + parseInt(total*(shippingCost/100))
-    
-    document.getElementsByClassName('cart-total-price')[0].innerText = 'UYU ' + parseInt(total*(1+shippingCost/100))  
+    if (cartItemContainer.childElementCount===0) {
+
+        cartSubtotal.innerText = 'UYU ' + 0
+        
+        shippingMethodPrice.innerHTML = 'UYU ' + 0
+        
+        cartTotalPrice.innerText = 'UYU ' + 0
+
+    } else {
+        
+        cartSubtotal.innerText = 'UYU ' + parseInt(total) 
+        
+        shippingMethodPrice.innerHTML = 'UYU ' + parseInt(total*(shippingCost/100))
+        
+        cartTotalPrice.innerText = 'UYU ' + parseInt(total*(1+shippingCost/100))  
+    }
+
 }
 
 function quantityChanged(event) {
@@ -74,6 +94,7 @@ function quantityChanged(event) {
     updateCartTotal()
 }
 
+// Validacion de la Forma de Pago
 document.getElementById('payButton').onclick = () => {
     if (
         document.getElementById('cname').value.length == 0 ||
@@ -97,22 +118,36 @@ document.addEventListener("DOMContentLoaded", function(e){
             showCartArray();
             updateCartTotal();
 
+            //Listener para los cambios en la cantidad de producto
             var quantityInputs = document.getElementsByClassName('quantity')
             for (var i = 0; i < quantityInputs.length; i++) {
                 var input = quantityInputs[i]
                 input.addEventListener('change', quantityChanged)
             }
 
-            var shippingMethod = document.getElementsByName('shipping')
-            for (var i = 0; i < shippingMethod.length; i++) {
-                var shippingInput = shippingMethod[i]
+            //Listener para el metodo de envio
+            var shippingMethodSelectors = document.getElementsByName('shipping')
+            for (var i = 0; i < shippingMethodSelectors.length; i++) {
+                var shippingInput = shippingMethodSelectors[i]
                 shippingInput.addEventListener('click', () => {
                     shippingCost = event.target.value
                     
-                    document.getElementById('shippingMethod').innerHTML = 'UYU ' + total*(shippingCost/100)
+                    shippingMethodPrice.innerHTML = 'UYU ' + total*(shippingCost/100)
 
                     updateCartTotal()
                 })
+            }
+
+            //Remueve item del carro
+            for (let i = 0; i < deleteCartItemButtons.length; i++) {
+                var deleteCartItem = deleteCartItemButtons[i];
+                
+                deleteCartItem.onclick = () => {
+                    deleteButton = event.target
+                    deleteButton.parentElement.parentElement.parentElement.remove()
+
+                    updateCartTotal()
+                }
             }
         }
     });
