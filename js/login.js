@@ -3,7 +3,7 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-    document.getElementById('googleLogin').onclick = function onSignIn(googleUser) {
+    document.getElementById('googleLogin').onsubmit = function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -12,8 +12,10 @@ document.addEventListener("DOMContentLoaded", function(e){
         console.log('Family Name: ' + profile.getFamilyName());
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail());
+
+        window.location.href = "./index.html"
     }
-    
+
     loginForm.onsubmit = function (e){
         e.preventDefault();
         const user = document.getElementById("email").value;
