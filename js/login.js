@@ -16,9 +16,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     const loginAuth = function (url, data){
 
-        const user = document.getElementById("email").value;
-        const submitButton = document.getElementById("submitButton")
-
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(data), 

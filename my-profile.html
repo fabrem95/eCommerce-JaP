@@ -48,12 +48,43 @@
           <a id="logout" class="dropdown-item" href="login.html">Cerrar Sesion</a>
         </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container py-5">
+    <div class="col-md-6 col-sm-12 card  mx-auto">
+      <div class="card-body">
+        <h5>Mi Perfil</h5>
+        <hr>
+        <form id="profileForm" class="form-horizontal" action="">
+          <div class="form-group row">
+            <label class="col-md-3" for="profileName">Nombre:</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="profileName">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3" for="profileLastname">Apellidos:</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="profileLastname">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-3" for="profileEmail">E-mail:</label>
+            <div class="col-md-9">
+              <input type="email" class="form-control" id="profileEmail">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-3" for="profileTel">Tel:</label>
+            <div class="col-md-9">
+              <input type="tel" class="form-control" id="profileTel">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="">
+              <button type="submit" class="btn btn-primary float-md-right">Guardar Cambios</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
   <footer class="text-muted bg-light">
