@@ -66,27 +66,29 @@ function showProductList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action bg-light">
-                <div class="row">
-                    <div class="col-3">
+            <div class="col-12 col-md-3 p-1">
+                <a href="product-info.html" class="list-group-item list-group-item-action bg-light col-12 col-md-12 mb-1 p-1 pt-2 h-100">
+                    <div class="col-12">
                         <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
                     </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ product.name +`</h4>
-                            <small class="text-muted">` + product.soldCount + ` artículos</small>
+
+                    <div class="col-12">
+                        <div class="m-2">
+                            <h5 class="mb-1">`+ product.name +`</h5>
+                            <p class="text-truncate">` + product.description + `</p>
                         </div>
-                        <p class="mb-1">` + product.description + `</p>
-                        <br>
-                        <br>
-                        <br>
-                        <h4 class="mb-1 font-weight-bold">US$ `+ product.cost +`</h4>
                     </div>
-                </div>
-            </a>
+                    <hr>
+                            
+                    <div class="row">
+                        <div class="col-6 col-md-6 text-md-center text-center"><small class="text-muted">` + product.soldCount + ` artículos</small></div>
+                        <div class="col-6 col-md-6 text-md-center text-center"><h5 class="font-weight-bold">US$ `+ product.cost +`</h5></div>
+                    </div>
+                </a>
+            </div>
             `
         } 
-        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+        document.getElementById("products").innerHTML = htmlContentToAppend;
     }
 }
 
