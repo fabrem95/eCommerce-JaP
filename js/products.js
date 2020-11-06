@@ -67,16 +67,12 @@ function showProductList(){
 
             htmlContentToAppend += `
             <div class="col-12 col-md-3 p-1">
-                <a href="product-info.html" class="list-group-item list-group-item-action bg-light col-12 col-md-12 mb-1 p-1 pt-2 h-100">
-                    <div class="col-12">
-                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                    </div>
+                <a href="product-info.html" class="card shadow-sm custom-card col-12 col-md-12 mb-2 p-0 h-100">
+                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="bd-placeholder-img card-img-top">
+                        <h5 class="m-3">`+ product.name +`</h5>
 
-                    <div class="col-12">
-                        <div class="m-2">
-                            <h5 class="mb-1">`+ product.name +`</h5>
-                            <p class="text-truncate">` + product.description + `</p>
-                        </div>
+                    <div class="card-body">
+                        <p class="card-text text-truncate">` + product.description + `</p>
                     </div>
                     <hr>
                             
