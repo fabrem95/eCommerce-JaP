@@ -193,3 +193,20 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 .cart-image{
   height: 110px;
 }
+#profileImgInput{
+  opacity: 0;
+  width: 70px;
+}
+.profile-pic{
+  position: relative;
+}
+.upload-pic{
+  position: absolute;
+  right: 200;
+  bottom: 0;
+}
+.edit-pic{
+  position: absolute;
+  margin-left: 17%;
+  margin-top: 4%;
+}

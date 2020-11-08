@@ -56,8 +56,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     }, false); 
 
-    refreshProfileImg()
-
     profileForm.onsubmit = (e) => {
         e.preventDefault()
         const profileName = document.getElementById('profileName').value

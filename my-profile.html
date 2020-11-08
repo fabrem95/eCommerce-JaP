@@ -64,13 +64,20 @@
       </ul>
     </div>
   </nav>
+  
   <div class="container py-5">
     <div class="card col-md-6 col-sm-12 card  mx-auto">
       <div class="card-body">
-        <h5 class="card-title ml-2 bottom-align-text">Mi Perfil</h5>
+        <div class="profile-pic text-center">
+          <div class="col-12 avatar-img">
+            <img id="profileImg" class="rounded-circle z-depth-1-half mx-auto py-2 d-block" src="https://thumbs.dreamstime.com/b/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144855718.jpg" alt="avatar" width="150px" height="150px">
+          </div>
+          <div class="col-2 upload-pic btn btn-primary btn-sm">
+            <span class="edit-pic">Editar</span>
+            <input id="profileImgInput" type="file">
+          </div>
+        </div>
         <hr>
-        <input id="profileImgInput" type="file">
-        <img id="profileImg" src="https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg" alt="avatar" width="150px">
         <form id="profileForm" class="form-horizontal" action=""></form>
           <div class="form-group row">
             <label class="col-md-3" for="profileName">Nombre:</label>
