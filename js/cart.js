@@ -6,11 +6,13 @@ var deleteCartItemButtons = document.getElementsByClassName('delete-item')
 var cartSubtotal = document.getElementsByClassName('cart-subtotal-price')[0]
 var shippingMethodPrice = document.getElementById('shippingMethodPrice')
 var cartTotalPrice = document.getElementsByClassName('cart-total-price')[0]
+var cartForm = document.getElementById('cartForm')
 
 var total = 0
 var shippingCost = 5
 var currentCartArray = []
 
+//Functions
 function showCartArray(){
 
     let htmlContentToAppend = "";
@@ -109,6 +111,16 @@ document.getElementById('payButton').onclick = () => {
     }
 }
 
+var getFormData = function (form) {
+	var obj = {};
+    var formData = new FormData(form);
+    
+	for (var key of formData.keys()) {
+		obj[key] = formData.get(key);
+	}
+	return obj;
+};
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -155,5 +167,16 @@ document.addEventListener("DOMContentLoaded", function(e){
             }
         }
     });
-});
 
+    cartForm.onsubmit = (e) => {
+        e.preventDefault();
+
+        fetch('http://localhost:8080/cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(getFormData(cartForm))
+        })
+    }
+});

@@ -1,12 +1,12 @@
-const CATEGORIES_URL = "https://japdevdep.github.io/ecommerce-api/category/all.json";
-const PUBLISH_PRODUCT_URL = "https://japdevdep.github.io/ecommerce-api/product/publish.json";
-const CATEGORY_INFO_URL = "https://japdevdep.github.io/ecommerce-api/category/1234.json";
-const PRODUCTS_URL = "https://japdevdep.github.io/ecommerce-api/product/all.json";
-const PRODUCT_INFO_URL = "https://japdevdep.github.io/ecommerce-api/product/5678.json";
-const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
-const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
-const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
-const CART_PRODS = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
+const CATEGORIES_URL = "http://localhost:8080/categories";
+const PUBLISH_PRODUCT_URL = "http://localhost:8080/publish_products";
+const CATEGORY_INFO_URL = "http://localhost:8080/category_info";
+const PRODUCTS_URL = "http://localhost:8080/products";
+const PRODUCT_INFO_URL = "http://localhost:8080/products_info";
+const PRODUCT_INFO_COMMENTS_URL = "http://localhost:8080/products_comments";
+const CART_INFO_URL = "http://localhost:8080/cart_info";
+const CART_BUY_URL = "http://localhost:8080/cart_buy";
+const CART_PRODS = "http://localhost:8080/cart_prods";
 
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -45,17 +45,16 @@ var getJSONData = function(url){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-  const token = localStorage.getItem("token");
-  if(!token) {
+  const keyUser = localStorage.getItem("user");
+  if(!keyUser) {
     window.location.href = "./login.html";
   }
 
-  const keyUser = localStorage.getItem("user");
   const userName = document.getElementById("userName");
 
   userName.innerHTML = keyUser
 });
 
 document.getElementById("logout").onclick = () => {
-  localStorage.removeItem("token")
+  localStorage.removeItem("user")
 }

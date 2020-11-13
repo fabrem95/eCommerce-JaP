@@ -81,7 +81,7 @@
         </div>
       </div>
 
-      <form id="cartSubTotal" class="col-lg-4"> 
+      <form method="POST" id="cartForm" class="col-lg-4"> 
 
         <div class="card mb-4">
           <div class="card-body bg-light">
@@ -113,8 +113,8 @@
               </div>
               <div class="modal-body bg-light">
                   <div class="container">
-                    <label for="cname">Propietario de la Tarjeta </label><input class="form-control" type="text" id="cname" name="cardname" placeholder="Ana Maria Gonzales" required><br>
-                    <label for="ccnum">Numero de Tarjeta </label><input class="form-control" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required><br>
+                    <label for="cname">Propietario de la Tarjeta </label><input class="form-control" type="text" id="cname" name="cardName" placeholder="Ana Maria Gonzales" required><br>
+                    <label for="ccnum">Numero de Tarjeta </label><input class="form-control" type="text" id="ccnum" name="cardNumber" placeholder="1111-2222-3333-4444" required><br>
                     <div class="row">
                       <div class="col-6">
                         <label for="expYear">Vencimiento</label>
@@ -128,7 +128,7 @@
                   </div>
                 </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
               </div>
             </div>
           </div>
@@ -141,16 +141,16 @@
                   Método de Envío
                 </strong>
                 <div class="mt-2">
-                  <input type="radio" name="shipping" value="15" required> Premium (2-5 dias)
+                  <input type="radio" name="shippingCost" value="15" required> Premium (2-5 dias)
                   <br>
-                  <input type="radio" name="shipping" value="7"> Express (5-8 dias)
+                  <input type="radio" name="shippingCost" value="7"> Express (5-8 dias)
                   <br>
-                  <input type="radio" name="shipping" value="5" checked> Standard (12-15 dias)
+                  <input type="radio" name="shippingCost" value="5" checked> Standard (12-15 dias)
                   <p class="mt-2">Dirección</p> 
                   <input type="text" name="street" placeholder="Calle" required class="my-2 form-control">
-                  <input type="text" name="street" placeholder="N° Puerta" required class="mb-2 form-control">
-                  <input type="text" name="street" placeholder="Esquina" required class="mb-2 form-control">
-                  <input type="text" name="street" placeholder="País" required class="mb-2 form-control">
+                  <input type="text" name="doorNumber" placeholder="N° Puerta" required class="mb-2 form-control">
+                  <input type="text" name="intersection" placeholder="Esquina" required class="mb-2 form-control">
+                  <input type="text" name="country" placeholder="País" required class="mb-2 form-control">
                 </div>
               </div>
             </div>

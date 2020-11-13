@@ -1,0 +1,22 @@
+{
+  "name": "ecommerce-jap",
+  "version": "1.0.0",
+  "description": "Entrega final",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabrem95/eCommerce-JaP.git"
+  },
+  "author": "fabrem95",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabrem95/eCommerce-JaP/issues"
+  },
+  "homepage": "https://github.com/fabrem95/eCommerce-JaP#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

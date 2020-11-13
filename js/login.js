@@ -7,27 +7,30 @@ document.addEventListener("DOMContentLoaded", function(e){
         e.preventDefault();
         const user = document.getElementById("email").value;
         const password = document.getElementById("password").value;
+
+        localStorage.setItem("user", document.getElementById("email").value)
+        window.location.href = "./index.html";
         
-        loginAuth("http://localhost:8080/auth", {
-            user,
-            password
-        })
+        // loginAuth("http://localhost:8080/auth", {
+        //     user,
+        //     password
+        // })
     }
 
-    const loginAuth = function (url, data){
+    // const loginAuth = function (url, data){
 
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data), 
-            headers:{
-            'Content-Type': 'application/json'
-            }
-        }).then(res => res.json())
-        .then(response => {
-            localStorage.setItem("token", response.token);
-            localStorage.setItem("user", document.getElementById("email").value)
-            window.location.href = "./index.html";
-        })
-        .catch(error => alert('Fallo en la autentificación'))
-    }
+    //     fetch(url, {
+    //         method: 'POST',
+    //         body: JSON.stringify(data), 
+    //         headers:{
+    //         'Content-Type': 'application/json'
+    //         }
+    //     }).then(res => res.json())
+    //     .then(response => {
+    //         // localStorage.setItem("token", response.token);
+    //         localStorage.setItem("user", document.getElementById("email").value)
+    //         window.location.href = "./index.html";
+    //     })
+    //     .catch(error => alert('Fallo en la autentificación'))
+    // }
 })
