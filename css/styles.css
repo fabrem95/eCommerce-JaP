@@ -210,3 +210,13 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
   margin-left: 17%;
   margin-top: 4%;
 }
+.input-group-prepend span{
+  width: 50px;
+  background-color: #FFC312;
+  color: black;
+  border:0 !important;
+}
+input:focus{
+  outline: 0 0 0 0  !important;
+  box-shadow: 0 0 0 0 !important;
+}

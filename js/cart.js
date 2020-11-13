@@ -8,6 +8,7 @@ var shippingMethodPrice = document.getElementById('shippingMethodPrice')
 var cartTotalPrice = document.getElementsByClassName('cart-total-price')[0]
 var cartForm = document.getElementById('cartForm')
 
+// Variables
 var total = 0
 var shippingCost = 5
 var currentCartArray = []

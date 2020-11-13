@@ -1,0 +1,45 @@
+html,body{
+    background-image: url('https://venngage-wordpress.s3.amazonaws.com/uploads/2018/09/Colorful-Geometric-Simple-Background-Image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+}
+.container{
+    height: 100%;
+    align-content: center;
+}
+.card{
+    height: 400px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 350px;
+    background-color: rgba(0,0,0,0.5);
+}
+.card-header h1{
+    color: white;
+    text-align: center;
+}
+.input-group-prepend span{
+    width: 50px;
+    background-color: #1281ff;
+    color: black;
+    border:0 !important;
+}
+#remember-me{
+    color: white;
+}
+#submitButton{
+    color: black;
+    background-color: #1281ff;
+    width: 100px;
+    margin-top: 20px;
+    color: white;
+}
+#submitButton:hover{
+    color: black;
+    background-color: white;
+}
+svg{
+    margin: auto;
+}
