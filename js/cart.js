@@ -7,6 +7,10 @@ var cartSubtotal = document.getElementsByClassName('cart-subtotal-price')[0]
 var shippingMethodPrice = document.getElementById('shippingMethodPrice')
 var cartTotalPrice = document.getElementsByClassName('cart-total-price')[0]
 var cartForm = document.getElementById('cartForm')
+var itemName = document.getElementsByName('itemName')
+var itemQuantity = document.getElementsByName('quantity')
+var itemCurrency = document.getElementsByName('itemCurrency')
+var itemCost = document.getElementsByName('itemCost')
 
 // Variables
 var total = 0
@@ -29,7 +33,7 @@ function showCartArray(){
                         <div class="col-md-7 col-lg-9 col-xl-9">
                             <div class="row">
                                 <div class="col-7 px-0">
-                                    <h6 class="">`+ cart.name +`</h6>
+                                    <h6 name="itemName">`+ cart.name +`</h6>
                                 </div>
                                 <div class="col-2 px-0">
                                     <div class="pl-4">
@@ -37,7 +41,7 @@ function showCartArray(){
                                     </div>
                                 </div>
                                 <div class="col-3 pl-0 text-right align-text-bottom">
-                                    <p class="mb-0 "><span><strong class="item-currency">`+ cart.currency +" "+`</strong><strong class="cart-price">`+ cart.unitCost +`</strong></span></p>
+                                    <p class="mb-0 "><span><strong class="item-currency" name="itemCurrency">`+ cart.currency +" "+`</strong><strong class="cart-price" name="itemCost">`+ cart.unitCost +`</strong></span></p>
                                 </div>
                             </div>
                             <button class="delete-item btn btn-outline-danger float-right mt-5">
@@ -111,14 +115,51 @@ document.getElementById('payButton').onclick = () => {
         alert('Complete todos los campos de Forma de Pago')
     }
 }
+const getCostData = () => {
+    var costData = {}
 
-var getFormData = function (form) {
+    costData.subtotal = cartSubtotal.innerHTML
+    costData.shippingCost = shippingMethodPrice.innerHTML
+    costData.totalCost = cartTotalPrice.innerHTML
+
+    return costData
+}
+
+const getProdData = () => {    
+    var shoppedItems = {} 
+
+    for (let i = 0; i < itemName.length; i++) {
+        key = itemName[i]
+
+        shoppedItems[key.getAttribute('name')+i] = key.innerHTML
+    }
+    for (let i = 0; i < itemQuantity.length; i++) {
+        key = itemQuantity[i]
+
+        shoppedItems[key.getAttribute('name')+i] = key.value
+    }
+    for (let i = 0; i < itemCurrency.length; i++) {
+        key = itemCurrency[i]
+
+        shoppedItems[key.getAttribute('name')+i] = key.innerHTML
+    }
+    for (let i = 0; i < itemCost.length; i++) {
+        key = itemCost[i]
+
+        shoppedItems[key.getAttribute('name')+i] = key.innerHTML
+    }
+    return shoppedItems;
+}
+
+const getFormData = (form) => {
 	var obj = {};
     var formData = new FormData(form);
-    
-	for (var key of formData.keys()) {
-		obj[key] = formData.get(key);
-	}
+
+    for (var key of formData.keys()) {
+        obj[key] = formData.get(key);
+    }
+    obj.shoppedItems = getProdData()
+    obj.costData = getCostData()
 	return obj;
 };
 
@@ -158,8 +199,8 @@ document.addEventListener("DOMContentLoaded", function(e){
             for (let i = 0; i < deleteCartItemButtons.length; i++) {
                 var deleteCartItem = deleteCartItemButtons[i];
                 
-                deleteCartItem.onclick = () => {
-                    var deleteButton = event.target
+                deleteCartItem.onclick = (e) => {
+                    var deleteButton = e.target
 
                     deleteButton.closest('.card-body').remove();
 
