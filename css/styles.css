@@ -220,3 +220,6 @@ input:focus{
   outline: 0 0 0 0  !important;
   box-shadow: 0 0 0 0 !important;
 }
+.list-group-item-action:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}

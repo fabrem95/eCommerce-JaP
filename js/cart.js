@@ -65,10 +65,9 @@ function updateCartTotal() {
     for (var i = 0; i < cartRows.length; i++) {
         var cartRow = cartRows[i]
         var priceElement = cartRow.getElementsByClassName('cart-price')[0]
-        var quantityElement = cartRow.getElementsByClassName('quantity')[0]
+        var quantity = cartRow.getElementsByClassName('quantity')[0].value
         var itemCurrency = cartRow.getElementsByClassName('item-currency')[0].innerText
         var price = parseInt(priceElement.innerText)
-        var quantity = quantityElement.value
 
         if (itemCurrency === "UYU ") {
             total += (price * quantity)
@@ -93,7 +92,6 @@ function updateCartTotal() {
         
         cartTotalPrice.innerText = 'UYU ' + parseInt(total*(1+shippingCost/100))  
     }
-
 }
 
 function quantityChanged(event) {
@@ -115,6 +113,7 @@ document.getElementById('payButton').onclick = () => {
         alert('Complete todos los campos de Forma de Pago')
     }
 }
+
 const getCostData = () => {
     var costData = {}
 
@@ -183,14 +182,12 @@ document.addEventListener("DOMContentLoaded", function(e){
             }
 
             //Listener para el metodo de envio
-            var shippingMethodSelectors = document.getElementsByName('shipping')
+            var shippingMethodSelectors = document.getElementsByName('shippingTax')
             for (var i = 0; i < shippingMethodSelectors.length; i++) {
                 var shippingInput = shippingMethodSelectors[i]
-                shippingInput.addEventListener('click', () => {
-                    shippingCost = event.target.value
+                shippingInput.addEventListener('click', (e) => {
+                    shippingCost = e.target.value
                     
-                    shippingMethodPrice.innerHTML = 'UYU ' + total*(shippingCost/100)
-
                     updateCartTotal()
                 })
             }

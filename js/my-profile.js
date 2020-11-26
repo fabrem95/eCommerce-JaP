@@ -1,3 +1,4 @@
+// Elementos HTML
 const profileForm = document.getElementById('profileForm')
 const profileInfoParser = JSON.parse(localStorage.getItem('profileInfo'))
 const profileImgInput = document.getElementById('profileImgInput')
@@ -58,10 +59,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     profileForm.onsubmit = (e) => {
         e.preventDefault()
-        const profileName = document.getElementById('profileName').value
-        const profileLastname = document.getElementById('profileLastname').value
-        const profileEmail = document.getElementById('profileEmail').value
-        const profileTel = document.getElementById('profileTel').value
+        var profileName = document.getElementById('profileName').value
+        var profileLastname = document.getElementById('profileLastname').value
+        var profileEmail = document.getElementById('profileEmail').value
+        var profileTel = document.getElementById('profileTel').value
 
         profileInfo = {
             profileName,

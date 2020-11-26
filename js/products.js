@@ -3,13 +3,15 @@ const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
 const ORDER_BY_PROD_PRICE_DESC = "PrecioDesc";
 const ORDER_BY_PROD_PRICE_ASC = "PrecioAsc";
+
+const prodSearch = document.getElementById("prodSearch");
+
 var currentProductArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
-const prodSearch = document.getElementById("prodSearch");
 
-function sortProduct(criteria, array){
+const sortProduct = (criteria, array) => {
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
     {
@@ -56,7 +58,7 @@ function sortProduct(criteria, array){
     return result;
 }
 
-function showProductList(){
+const showProductList = () => {
 
     let htmlContentToAppend = "";
     for(let i = 0; i < currentProductArray.length; i++){
@@ -67,7 +69,7 @@ function showProductList(){
 
             htmlContentToAppend += `
             <div class="col-12 col-md-3 p-1">
-                <a href="product-info.html" class="card shadow-sm custom-card col-12 col-md-12 mb-2 p-0 h-100">
+                <a href="product-info.html" class="card custom-card col-12 col-md-12 mb-2 p-0 h-100 list-group-item-action">
                         <img src="` + product.imgSrc + `" alt="` + product.description + `" class="bd-placeholder-img card-img-top">
                         <h5 class="m-3">`+ product.name +`</h5>
 
@@ -88,7 +90,7 @@ function showProductList(){
     }
 }
 
-function sortAndShowProduct(sortCriteria, productArray){
+const sortAndShowProduct = (sortCriteria, productArray) => {
     currentSortCriteria = sortCriteria;
 
     if(productArray != undefined){

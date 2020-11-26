@@ -1,7 +1,7 @@
 var product = {};
 var comments = [];
 
-function showImagesGallery(array){
+const showImagesGallery = (array) => {
 
     let htmlContentToAppend = "";
 
@@ -29,7 +29,7 @@ function showImagesGallery(array){
     document.getElementsByClassName("carousel-item")[0].classList.add("active")
 }
 
-function starRate(num) {
+const starRate = (num) => {
     const starOn = `<span class="fa fa-star checked"></span>`
     const starOff = `<span class="fa fa-star"></span>`
 
@@ -38,7 +38,7 @@ function starRate(num) {
         starOff.repeat([5-num]))
 }
 
-function showComments(array){
+const showComments = (array) => {
 
     let htmlContentToAppend = "";
 
@@ -74,7 +74,7 @@ function showComments(array){
     }
 }
 
-function newPost(object){
+const newPost = (object) => {
 
     htmlContentToAppend = `
     <div class="border border-secondary rounded mb-2 p-2 depth-1">
@@ -100,7 +100,7 @@ function newPost(object){
     document.getElementById(object.id).innerHTML = starRate(object.score)
 }
 
-function showRecommendedGallery(array1, array2){
+const showRecommendedGallery = (array1, array2) => {
     let htmlContentToAppend = "";
 
     for(let i = 0; i < array2.length; i++){

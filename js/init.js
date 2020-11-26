@@ -8,15 +8,15 @@ const CART_INFO_URL = "http://localhost:8080/cart_info";
 const CART_BUY_URL = "http://localhost:8080/cart_buy";
 const CART_PRODS = "http://localhost:8080/cart_prods";
 
-var showSpinner = function(){
+const showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
 
-var hideSpinner = function(){
+const hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
-var getJSONData = function(url){
+const getJSONData = function(url){
     var result = {};
     showSpinner();
     return fetch(url)

@@ -1,5 +1,16 @@
+@keyframes start {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -20%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
 html,body{
-    background-image: url('https://venngage-wordpress.s3.amazonaws.com/uploads/2018/09/Colorful-Geometric-Simple-Background-Image.jpg');
+    background-image: url('https://wallpaperaccess.com/full/1782494.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
@@ -13,6 +24,8 @@ html,body{
     height: 400px;
     margin-top: auto;
     margin-bottom: auto;
+    animation-name: start;
+    animation-duration: 1s;
     width: 350px;
     background-color: rgba(0,0,0,0.5);
 }
