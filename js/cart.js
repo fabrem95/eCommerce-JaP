@@ -25,7 +25,7 @@ function showCartArray(){
         let cart = currentCartArray[i];
 
             htmlContentToAppend += `
-                <div class="card-body border bg-light">
+                <div class="card card-body border bg-light">
                     <div class="row cart-row">
                         <div class="col-md-5 col-lg-3 col-xl-3 h-50">
                             <img src="`+ cart.src +`" alt="" class="cart-image rounded img-fluid w-100">

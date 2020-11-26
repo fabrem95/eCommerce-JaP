@@ -1,3 +1,9 @@
+body, main{
+  background-image: url('https://wallpaperaccess.com/full/753389.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .jumbotron, .card-body, .container, .site-header{
     font-family: 'Raleway', serif !important;
 }
@@ -136,9 +142,6 @@ a.custom-card:hover {
   text-decoration: inherit;
 }
 
-
-
-
 .checked {
   color: orange;
 }
@@ -221,5 +224,15 @@ input:focus{
   box-shadow: 0 0 0 0 !important;
 }
 .list-group-item-action:hover {
+  box-shadow: 10px 10px 20px rgba(33,33,33,.2); 
+}
+
+.profile-header {
+  background-image: url('https://houstoncertifiedmidwife.com/wp-content/uploads/2016/05/orange-profile-background-1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card{
   box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
