@@ -112,9 +112,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
             sortAndShowProduct(ORDER_ASC_BY_NAME, resultObj.data);
         }
         prodSearch.addEventListener("keyup", (e) => {
-            const searchString = prodSearch.value.toLowerCase()
-            const products = resultObj.data
-            const currentProductArray= products.filter( product => { 
+            var searchString = prodSearch.value.toLowerCase()
+            var products = resultObj.data
+            var currentProductArray= products.filter( product => { 
                 return (product.name.toLowerCase().includes(searchString) || 
                 product.description.toLowerCase().includes(searchString))})
             sortAndShowProduct(ORDER_ASC_BY_NAME, currentProductArray);

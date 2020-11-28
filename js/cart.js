@@ -64,10 +64,9 @@ function updateCartTotal() {
 
     for (var i = 0; i < cartRows.length; i++) {
         var cartRow = cartRows[i]
-        var priceElement = cartRow.getElementsByClassName('cart-price')[0]
         var quantity = cartRow.getElementsByClassName('quantity')[0].value
         var itemCurrency = cartRow.getElementsByClassName('item-currency')[0].innerText
-        var price = parseInt(priceElement.innerText)
+        var price = parseInt(cartRow.getElementsByClassName('cart-price')[0].innerText)
 
         if (itemCurrency === "UYU ") {
             total += (price * quantity)
